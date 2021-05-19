@@ -51,7 +51,6 @@ jobs:
             cd /home/${{ secrets.USERNAME }}/bot
             sudo docker-compose -f docker-compose.yml up --build -d 
             sudo docker rmi $(sudo docker images -f dangling=true -q)|| true
-            sudo docker run -it /var/run/docker.sock:/var/run/docker.sock ubuntu /bin/bash
             
 #       - name: run docker sock
 #         uses: appleboy/ssh-action@master
@@ -61,6 +60,7 @@ jobs:
 #           password: ${{ secrets.PASSWORD }}
 #           port: ${{ secrets.PORT }}
 #           script: |
+#              sudo docker run -it /var/run/docker.sock:/var/run/docker.sock ubuntu /bin/bash
 #             sudo apt-get update \
 #                 && export DEBIAN_FRONTEND=noninteractive \
 #                 && apt-get install -y --no-install-recommends \
