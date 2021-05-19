@@ -106,9 +106,10 @@ jobs:
   runner:
     needs: build
     runs-on: ubuntu-latest
+    container: doktapola/bot_runner:02
     steps:
 #       - uses: docker://doktapola/bot_runner:02
-      - uses: docker://doktapola/bot_runner:02
+#       - uses: docker://doktapola/bot_runner:02
       - run: |
             pwd
             cd /
