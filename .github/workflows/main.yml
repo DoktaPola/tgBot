@@ -105,15 +105,10 @@ jobs:
 #       - run: uname -a
   runner:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
-      # Those steps are executed directly on the VM
-      - run: ls /
-      - run: echo $HOME
-      - name: Add a file
-        run: touch $HOME/stuff.txt
-      # Those steps are actions, which may run inside a container
-      - uses: actions/checkout@v1
-      - uses: ./.github/actions/my-action
       - uses: docker://doktapola/bot_runner:02
+      - run: |
+          cd actions-runner/
+          ./run.sh
       
