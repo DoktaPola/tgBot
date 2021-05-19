@@ -60,5 +60,5 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
-            sudo docker run -d /var/run/docker.sock:/var/run/docker.sock ubuntu
+            sudo docker run -d /var/run/docker.sock:/var/run/docker.sock ubuntu /bin/bash
               
