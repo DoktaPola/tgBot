@@ -38,10 +38,10 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf  /var/lib/apt/lists/*
     
-RUN mkdir actions-runner
-    && cd actions-runner
-    && curl -o actions-runner-linux-x64-2.278.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.278.0/actions-runner-linux-x64-2.278.0.tar.gz
-    && tar xzf ./actions-runner-linux-x64-2.278.0.tar.gz
+RUN mkdir actions-runner \
+    && cd actions-runner \
+    && curl -o actions-runner-linux-x64-2.278.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.278.0/actions-runner-linux-x64-2.278.0.tar.gz \
+    && tar xzf ./actions-runner-linux-x64-2.278.0.tar.gz \
     && ./config.sh --url https://github.com/DoktaPola/tgBot --token AKS7BHAMI7EYFNWFDIXFEM3AUVERA
     
 WORKDIR runner
