@@ -99,6 +99,7 @@ jobs:
 #                   && ./run.sh
                          
   start_runner:
+    needs: build
     runs-on: self-hosted
     steps:    
       - name: run docker sock
