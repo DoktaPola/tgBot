@@ -110,12 +110,7 @@ jobs:
     steps:
 #       - uses: docker://doktapola/bot_runner:02
 #       - uses: docker://doktapola/bot_runner:02
-      - run: |
-            pwd
-            cd /
-            pwd
-            ls
-  #       - run: | 
-  #           cd actions-runner
-  #           ./run.sh
+        - run: | 
+            cd actions-runner
+            ./run.sh
 
