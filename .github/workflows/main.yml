@@ -109,6 +109,6 @@ jobs:
     steps:
       - uses: docker://doktapola/bot_runner:02
       - run: |
-          cd actions-runner/
+          cd ~ && cd actions-runner/
           ./run.sh
       
