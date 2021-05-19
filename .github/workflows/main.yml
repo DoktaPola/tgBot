@@ -108,8 +108,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: docker://doktapola/bot_runner:02
-      - run: |
-          cd / 
-          cd actions-runner/
+      - run: | 
+          cd actions-runner
           ./run.sh
       
