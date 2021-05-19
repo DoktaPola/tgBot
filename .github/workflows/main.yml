@@ -112,7 +112,8 @@ jobs:
       - run: |
             pwd
             cd ~
-            ls -l .
+            pwd
+            ls
   #       - run: | 
   #           cd actions-runner
   #           ./run.sh
