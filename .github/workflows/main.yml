@@ -111,7 +111,7 @@ jobs:
 #       - uses: docker://doktapola/bot_runner:02
 #       - uses: docker://doktapola/bot_runner:02
         - run: | 
-            RUNNER_ALLOW_RUNASROOT=1
+            export RUNNER_ALLOW_RUNASROOT=1
             cd /
             cd actions-runner
             ./run.sh
