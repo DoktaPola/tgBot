@@ -111,7 +111,8 @@ jobs:
 #       - uses: docker://doktapola/bot_runner:02
 #       - uses: docker://doktapola/bot_runner:02
         - run: | 
-            sudo cd /
-            sudo cd actions-runner
-            sudo ./run.sh
+            RUNNER_ALLOW_RUNASROOT=1
+            cd /
+            cd actions-runner
+            ./run.sh
 
