@@ -48,7 +48,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           source: "./action.yml"
-          target: "/home/runner/work/tgBot/tgBot/"
+          target: "/runner/work/tgBot/tgBot/"
           
       - name: run docker
         uses: appleboy/ssh-action@master
