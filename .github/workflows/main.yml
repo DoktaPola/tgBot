@@ -110,7 +110,9 @@ jobs:
 #       - uses: docker://doktapola/bot_runner:02
       - uses: docker://doktapola/bot_runner:02
         with:
-          args: ls -l .
+          script: |
+            pwd
+            ls -l .
   #       - run: | 
   #           cd actions-runner
   #           ./run.sh
