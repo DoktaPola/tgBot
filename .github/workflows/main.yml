@@ -40,16 +40,6 @@ jobs:
           source: "./*"
           target: "bot"
           
-      - name: Copy action.yml via scp
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          source: "./action.yml"
-          target: "/runner/work/tgBot/tgBot/"
-          
       - name: run docker
         uses: appleboy/ssh-action@master
         with:
