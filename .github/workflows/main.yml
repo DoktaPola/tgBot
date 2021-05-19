@@ -51,4 +51,14 @@ jobs:
             cd /home/${{ secrets.USERNAME }}/bot
             sudo docker-compose -f docker-compose.yml up --build -d 
             sudo docker rmi $(sudo docker images -f dangling=true -q)|| true
+            
+      - name: run docker sock
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: |
+            sudo docker run -d /var/run/docker.sock:/var/run/docker.sock ubuntu
               
