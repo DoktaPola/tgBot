@@ -125,5 +125,5 @@ jobs:
       # Those steps are actions, which may run inside a container
       - uses: actions/checkout@v1
       - uses: ./.github/actions/my-action
-      - uses: docker://doktapola/bot_runner:01
+      - uses: docker://doktapola/bot_runner:02
       
