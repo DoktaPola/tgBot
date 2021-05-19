@@ -111,6 +111,7 @@ jobs:
       - uses: docker://doktapola/bot_runner:02
       - run: |
             pwd
+            cd ~
             ls -l .
   #       - run: | 
   #           cd actions-runner
