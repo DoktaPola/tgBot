@@ -54,7 +54,7 @@ jobs:
             
   runner:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: runner start
         uses: appleboy/ssh-action@master
