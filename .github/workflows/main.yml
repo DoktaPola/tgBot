@@ -52,67 +52,19 @@ jobs:
             sudo docker-compose -f docker-compose.yml up --build -d 
             sudo docker rmi $(sudo docker images -f dangling=true -q)|| true
             
-#       - name: run docker sock
-#         uses: appleboy/ssh-action@master
-#         with:
-#           host: ${{ secrets.HOST }}
-#           username: ${{ secrets.USERNAME }}
-#           password: ${{ secrets.PASSWORD }}
-#           port: ${{ secrets.PORT }}
-#           script: |
-#              sudo docker run -it /var/run/docker.sock:/var/run/docker.sock ubuntu /bin/bash
-#             sudo apt-get update \
-#                 && export DEBIAN_FRONTEND=noninteractive \
-#                 && apt-get install -y --no-install-recommends \
-#                                       docker-compose \
-#                                       docker.io \
-#                                       awscli \
-#                                       tar \
-#                                       unzip \
-#                                       apt-transport-https \
-#                                       ca-certificates \
-#                                       sudo \
-#                                       gnupg-agent \
-#                                       software-properties-common \
-#                                       build-essential \
-#                                       zlib1g-dev \
-#                                       zstd \
-#                                       gettext \
-#                                       libcurl4-openssl-dev \
-#                                       inetutils-ping \
-#                                       jq \
-#                                       wget \
-#                                       dirmngr \
-#                                       openssh-client \
-#                                       locales \
-#                                       python3-pip \
-#                                       jq \
-#                                       curl \
-#                   && apt-get clean \
-#                   && rm -rf  /var/lib/apt/lists/*
-#               export RUNNER_ALLOW_RUNASROOT=1
-#               sudo mkdir actions-runner \
-#                   && cd actions-runner \
-#                   && curl -o actions-runner-linux-x64-2.278.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.278.0/actions-runner-linux-x64-2.278.0.tar.gz \
-#                   && tar xzf ./actions-runner-linux-x64-2.278.0.tar.gz \
-#                   && ./config.sh --url https://github.com/DoktaPola/tgBot --token AKS7BHAMI7EYFNWFDIXFEM3AUVERA \
-#                   && ./run.sh
-                         
-#   comment:
-#     needs: build
-#     runs-on: self-hosted
-#     steps:
-#       - run: uname -a
   runner:
-    needs: build
-    runs-on: ubuntu-latest
-    container: doktapola/bot_runner:02
+    runs-on: self-hosted
     steps:
-#       - uses: docker://doktapola/bot_runner:02
-#       - uses: docker://doktapola/bot_runner:02
-        - run: | 
-            export RUNNER_ALLOW_RUNASROOT=1
-            cd /
-            cd actions-runner
-            ./run.sh
-
+      - name: runner start
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: |
+            sudo docker run -it --name my-runner \
+            -e RUNNER_NAME=new-bot-runner \
+            -e GITHUB_ACCESS_TOKEN=AKS7BHEGVCD5CF2E7KT6JXTAU6O2O \
+            -e RUNNER_REPOSITORY_URL=https://github.com/DoktaPola/tgBot \
+            tcardonne/github-runner
