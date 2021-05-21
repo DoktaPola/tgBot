@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
   
       - name: Checkout
@@ -52,20 +52,3 @@ jobs:
             sudo docker-compose -f docker-compose.yml up --build -d 
             sudo docker rmi $(sudo docker images -f dangling=true -q)|| true
             
-  runner:
-    needs: build
-    runs-on: self-hosted
-    steps:
-      - name: runner start
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          script: |
-            sudo docker run -it --name my-runner \
-            -e RUNNER_NAME=new-bot-runner \
-            -e GITHUB_ACCESS_TOKEN=AKS7BHEGVCD5CF2E7KT6JXTAU6O2O \
-            -e RUNNER_REPOSITORY_URL=https://github.com/DoktaPola/tgBot \
-            tcardonne/github-runner
